@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>Login</title>
-        <link rel="stylesheet" href="../style/style.css" />
+        <link rel="stylesheet" href="style/style.css" />
     </head>
     <body>
         <button id="logoutButton">LogOut</button>
@@ -18,8 +18,11 @@
         </form>
         <div id="error"></div>
         <button id="logoutButton" style="display: none">Logout</button>
-        <div id="userinfos"></div>
-        <script src="../login.js"></script>
+        <div id="userContainer">
+            <div id="userinfos"></div>
+            <div id="userstats"></div>
+        </div>
+        <script src="login.js"></script>
         <svg id="graphUp" width="700" height="400"></svg>
         <svg id="graphDown" width="700" height="400"></svg>
         <svg id="graphXp" width="700" height="400"></svg>

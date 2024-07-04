@@ -130,13 +130,14 @@ async function loadData(userId, token) {
 
 async function displayUserInfo(user) {
     const userinfos = document.getElementById("userinfos");
+    const userstats = document.getElementById("userstats");
     for (const key in user) {
         switch (key) {
             case "login":
-                const login = document.createElement("div");
+                const login = document.createElement("h1");
                 login.setAttribute("id", "login");
                 login.innerHTML = "Bienvenue " + user[key];
-                userinfos.appendChild(login);
+                document.getElementsByTagName("body")[0].prepend(login);
                 break;
             case "auditRatio":
                 const ratio = document.createElement("div");
@@ -151,19 +152,19 @@ async function displayUserInfo(user) {
                         user[key].toFixed(1) +
                         ". Très bien !";
                 }
-                userinfos.appendChild(ratio);
+                userstats.appendChild(ratio);
                 break;
             case "totalUp":
                 const up = document.createElement("div");
                 up.innerHTML =
                     "Vous avez donné " + user[key] + " points d'audit.";
-                userinfos.appendChild(up);
+                userstats.appendChild(up);
                 break;
             case "totalDown":
                 const down = document.createElement("div");
                 down.innerHTML =
                     "Vous avez reçu " + user[key] + " points d'audit.";
-                userinfos.appendChild(down);
+                userstats.appendChild(down);
                 break;
             case "firstName":
                 const firstName = document.createElement("div");
@@ -177,14 +178,18 @@ async function displayUserInfo(user) {
                 break;
             case "createdAt":
                 const created = document.createElement("div");
-                created.innerHTML = "Date d'inscription: " + user[key];
+                let year = user[key].slice(0, 4);
+                let month = user[key].slice(5, 7);
+                let day = user[key].slice(8, 10);
+                created.innerHTML =
+                    "Date d'inscription: " + day + "/" + month + "/" + year;
                 userinfos.appendChild(created);
                 break;
             default:
                 break;
         }
     }
-    userinfos.style.visibility = "visible";
+    document.getElementById("userContainer").style.visibility = "visible";
 }
 
 async function sortGraph(transactions) {
